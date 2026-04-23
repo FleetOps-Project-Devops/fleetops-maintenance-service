@@ -1,4 +1,4 @@
-﻿package com.fleetops.maintenance.exception;
+package com.fleetops.maintenance.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-﻿package com.fleetops.maintenance.security;
+package com.fleetops.maintenance.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-﻿package com.fleetops.maintenance.entity;
+package com.fleetops.maintenance.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

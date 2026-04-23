@@ -1,4 +1,4 @@
-﻿package com.fleetops.maintenance;
+package com.fleetops.maintenance;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

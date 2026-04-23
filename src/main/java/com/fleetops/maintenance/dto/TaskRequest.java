@@ -1,4 +1,4 @@
-﻿package com.fleetops.maintenance.dto;
+package com.fleetops.maintenance.dto;
 
 public class TaskRequest {
     private Long vehicleId;

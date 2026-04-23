@@ -1,46 +1,40 @@
-﻿# ðŸ›’ FleetOps Cart Service
+# 🔧 FleetOps Maintenance Service
 
-The Shopping Cart service for the FleetOps E-commerce platform. It manages persistent, per-user shopping carts.
+The Maintenance Service manages the **pending task queue** for drivers within the FleetOps Vehicle Maintenance Platform. It acts as a staging area where drivers can draft service issues before formalizing them into an official Service Request.
 
-## ðŸ› ï¸ Tech Stack
+## 🛠️ Tech Stack
 *   **Framework:** Spring Boot 3.4
-*   **Database:** PostgreSQL (uses `cart_db`)
-*   **ORM:** Spring Data JPA / Hibernate
-*   **Security:** JWT Validation (Stateless)
+*   **Database:** PostgreSQL (uses `maintenance_db`)
+*   **Authentication:** Stateless JWT (Validated via `JwtAuthenticationFilter`)
 
-## ðŸŽ¯ Responsibilities
-*   **Cart Persistence:** Stores cart items (`productId` and `quantity`) linked to the authenticated user's username.
-*   **Item Management:** Allows users to add items to their cart.
-*   **Cart Lifecycle:** The cart is designed to be cleared automatically by the Order Service upon successful checkout.
+## 🎯 Responsibilities
+*   **Task Staging:** Maintains a persistent queue of pending maintenance tasks per authenticated user.
+*   **Task Management:** Supports adding and removing items from the queue.
+*   **Queue Clearing:** The queue is automatically cleared when a driver successfully submits a formal Service Request.
 
-*Note: This service only stores references to products (`productId`). Full product details are fetched on demand by the frontend or order service.*
-
-## ðŸ“¡ API Endpoints
+## 📡 API Endpoints
 
 | Method | Endpoint | Auth Required | Description |
 | :--- | :--- | :--- | :--- |
-| `GET` | `/cart` | Yes (JWT) | Retrieve the current user's cart |
-| `POST` | `/cart/add` | Yes (JWT) | Add an item to the cart (`productId`, `quantity`) |
-| `DELETE` | `/cart/clear` | Yes (JWT) | Empty the current user's cart |
+| `GET` | `/tasks` | Yes (JWT) | Get current user's queued tasks |
+| `POST` | `/tasks/add` | Yes (JWT) | Add a task to the queue `{vehicleId, description}` |
+| `DELETE` | `/tasks/clear` | Yes (JWT) | Clear all items from the current user's queue |
 
-## ðŸš€ Running Locally
+## 🚀 Running Locally
 
 ### Prerequisites
-*   Java 17+
+*   Java 21
 *   Maven
-*   PostgreSQL running locally (with `cart_db` created)
+*   PostgreSQL running locally (with `maintenance_db` created)
 
 ### Environment Variables
-You must set the `JWT_SECRET` environment variable to match the one used by the Auth Service.
-
 ```bash
 export JWT_SECRET=your-super-secret-key-minimum-32-chars
-mvn spring-boot:run
+./mvnw spring-boot:run
 ```
 
-## ðŸ³ Docker
+## 🐳 Docker
 
 ```bash
 docker build -t fleetops-maintenance-service:v1.0.0 .
 ```
-

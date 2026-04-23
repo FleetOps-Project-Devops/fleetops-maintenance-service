@@ -1,4 +1,4 @@
-﻿package com.fleetops.maintenance.repository;
+package com.fleetops.maintenance.repository;
 
 import com.fleetops.maintenance.entity.MaintenanceQueue;
 import org.springframework.data.jpa.repository.JpaRepository;

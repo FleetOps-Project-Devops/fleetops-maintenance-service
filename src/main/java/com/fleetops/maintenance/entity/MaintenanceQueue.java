@@ -1,4 +1,4 @@
-﻿package com.fleetops.maintenance.entity;
+package com.fleetops.maintenance.entity;
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
